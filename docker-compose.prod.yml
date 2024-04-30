@@ -1,0 +1,40 @@
+# sample docker-compose file for production
+
+version: '3.8'
+services:
+  web:
+    container_name: web
+    build: ./web
+    # Use gunicorn to run the app
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    volumes:
+      - ./web:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    env_file:
+      - ./web/api/.env.dev
+
+    # In this development mode we are using the local database
+    # Replace the DATABASE_HOSTNAME with the container name of the database:
+    # So that it can connect to the database
+    environment:
+      - DATABASE_HOST=db
+
+  db:
+    image: postgres:14.8-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=path_finder
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - "5432:5432"
+    volumes: 
+      - ./.db:/var/lib/postgresql/data
+  

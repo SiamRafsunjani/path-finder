@@ -24,6 +24,12 @@ def calculate_steps():
     if not post_data:
         raise InvalidPayloadException('No input data provided')
     
+    app.logger.info({
+        "message": "steps count start", 
+        "starting_point": post_data['start'],
+        "commands": post_data['commands'],
+    })
+    
     try:
         # Basic validation of the input data
         RobotStepCalculationValidator(**post_data)
