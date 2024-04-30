@@ -43,9 +43,7 @@ A microservice that calculates the path of a cleaning robot and persists in data
     - docker-compose.yml
 ```
 
-
-
-#### Requirements
+#### Running in docker
 
 * Docker
 * Docker Compose
@@ -63,8 +61,12 @@ Make sure you set the following environment variables:
     FLASK_APP
     FLASK_ENV
     FLASK_DEBUG
-    DATABASE_URL
 
+    DATABASE_USER
+    DATABASE_PASSWORD
+    DATABASE_HOST
+    DATABASE_NAME
+    DATABASE_PORT
 
 
 Build the images and run the containers.
@@ -131,6 +133,21 @@ Status Code: 400
     "message": "Invalid request body"
     "status_code": 400
 }
+```
+
+#### Running locally without docker
+Install the dependencies:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+Set the environment variables to point to the pg database you want. Then run the following command to start the server.
+
+```bash
+cd web/api
+python manage.py run -h 0.0.0.0
+
 ```
 
 

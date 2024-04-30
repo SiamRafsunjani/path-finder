@@ -14,6 +14,12 @@ services:
     env_file:
       - ./web/api/.env.dev
 
+    # In this development mode we are using the local database
+    # Replace the DATABASE_HOSTNAME with the container name of the database:
+    # So that it can connect to the database
+    environment:
+      - DATABASE_HOST=db
+
   ## Creates a postgres db "path_finder" with user "postgres" and password "postgres"
   db:
     image: postgres:14.8-alpine
