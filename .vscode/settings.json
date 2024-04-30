@@ -1,0 +1,19 @@
+{
+    "cSpell.words": [
+        "bson",
+        "discusion",
+        "dockerized",
+        "dotenv",
+        "gunicorn",
+        "jsonify",
+        "jsonlogger",
+        "jwts",
+        "pydantic",
+        "pymongo",
+        "pythonjsonlogger",
+        "smorest",
+        "sqlalchemy",
+        "tibber",
+        "werkzeug"
+    ]
+}

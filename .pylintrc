@@ -1,0 +1,27 @@
+[MASTER]
+
+# Add here any pylint plugin module names
+extension-pkg-whitelist=flask
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,j,k,_,
+
+[MESSAGES CONTROL]
+
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifiers separated by comma (,) or put this
+# option multiple times (only on the command line, not in the configuration
+# file where it should appear only once).
+disable=C0111,C0103,R0201,W0703,W0613
+
+[BASIC]
+
+# Naming style matching regular expression
+variable-rgx=[a-z_][a-z0-9_]{1,30}$
+
+[TYPECHECK]
+
+# List of decorators that produce context managers, such as
+# contextlib.contextmanager. Add to this list to register other decorators that
+# produce valid context managers.
+contextmanager-decorators=app.route
